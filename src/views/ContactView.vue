@@ -14,7 +14,7 @@
             </div>
           </div>
           <div class="contact-right">
-          <form v-on:submit.prevent="submitForm" class="contact-form">
+          <form v-on:submit.prevent="submitForm" class="contact-form animate__animated animate__zoomInRight">
             <label class="form-label">
               Your Name:
               <input type="text" v-model="formData.name" class="form-input" :class="{ 'error': !formData.name && submitted }">
