@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <div class="row" v-if="HomeArray && HomeArray.length > 0">
+    <div class="row animate__animated animate__fadeInTopLeft" v-if="HomeArray && HomeArray.length > 0">
       <div class="col-4">
         <div class="webDeveloperTitle">
           <h1>{{ HomeArray[0].title }}</h1>
@@ -21,6 +21,7 @@
 </template>
 
 <script>
+import 'animate.css';
 export default {
   name: 'HomeView',
   components: {},

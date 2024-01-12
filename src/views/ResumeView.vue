@@ -23,7 +23,7 @@
       </div>
       <br>
   
-      <div class="skills-section">
+      <div class="skills-section animate__animated animate__slideInUp">
         <h2 class="skills">Skills</h2>
         <!-- Use v-for to iterate through skills data -->
         <div v-for="(skill, index) in $store.state.Skills" :key="index" class="skill-item">
@@ -36,14 +36,14 @@
         <br>
       </div>
   
-      <div class="cvbtn">
+      <div class="cvbtn animate__animated animate__slideInUp">
         <a href="/public/img/310523" download class="btn">Download CV</a>
       </div>
     </div>
   </template>
   
   <script>
-
+import 'animate.css';
 export default {
  computed:{
     fetchResume(){

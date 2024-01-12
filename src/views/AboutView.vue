@@ -1,18 +1,14 @@
 <template>
   <div class="main">
-    <div class="container1">
+    <div class="container1 animate__animated animate__slideInLeft">
       <img src="https://i.postimg.cc/pL8zc0vV/IMG-20231225-100757.png" alt="Professional Image">
       <h3>Haanim Pietersen</h3>
       <p>Aspiring Software Developer</p>
       <p><strong>Address:</strong><br>20 Broadbill Street, Pelican Park</p>
       <p><strong>Phone Number:</strong><br>071 433 2419</p>
       <p><strong>Email:</strong><br>haanimpietersen@gmail.com</p>
-      <div class="toggles">
-        <a href="#" target="_blank">My Projects</a>
-        <a href="#" target="_blank">My Resume</a>
-      </div>
     </div>
-    <div class="container2">
+    <div class="container2 animate__animated animate__slideInRight">
       <h1>About Me</h1>
       <p>Hello,<br><br>
 
@@ -28,6 +24,14 @@ Haanim Pietersen
     </div>
   </div>
 </template>
+
+<script>
+import 'animate.css';
+export default {
+  // Your component options here
+};
+</script>
+
 
 <style scoped>
 .main {
@@ -58,14 +62,6 @@ Haanim Pietersen
 
 .container1 p {
   margin: 5px 0;
-}
-
-.toggles a {
-  text-decoration: none;
-  color: #D2B48C;
-  font-size: 14px;
-  display: block;
-  margin-top: 10px;
 }
 
 .container2 {
