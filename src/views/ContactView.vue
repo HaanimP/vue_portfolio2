@@ -12,6 +12,9 @@
               <a href="https://instagram.com/the.one.and.only.haanim?igshid=MzMyNGUyNmU2YQ=="><i class="fa-brands fa-instagram animate__animated animate__bounce"></i></a>
               <a href="https://za.linkedin.com/in/haanim-pietersen-172bb9264"><i class="fa-brands fa-linkedin animate__animated animate__bounce"></i></a>
             </div>
+            <div class="map">
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d52879.8279558335!2d18.519421550000008!3d-34.069789899999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1dcc415380a3a2d5%3A0xc223e448d2209d8d!2sPelikan%20Park%2C%20Cape%20Town%2C%207941!5e0!3m2!1sen!2sza!4v1705045428560!5m2!1sen!2sza" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
           </div>
           <div class="contact-right">
           <form v-on:submit.prevent="submitForm" class="contact-form animate__animated animate__zoomInRight">
@@ -35,17 +38,12 @@
         </div>
       </div>
     </div>
-    <MapComponent />
   </div>
 </template>
 
 <script>
 import 'animate.css';
-import MapComponent from '../components/MapComponent.vue';
 export default {
-  components: {
-    MapComponent
-  },
   data() {
     return {
       formData: {
@@ -70,7 +68,7 @@ export default {
       console.log('Form submitted!', this.formData);
       // You can add additional logic, such as sending a request to your server or using Formspree
     }
-  }
+  },
 };
 </script>
   
@@ -102,6 +100,10 @@ export default {
   
   .social-icons {
     margin-top: 20px;
+  }
+
+  .map {
+    margin-top: 5%;
   }
   
   .social-icons a {
