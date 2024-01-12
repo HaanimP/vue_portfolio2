@@ -12,6 +12,17 @@
               <a href="https://instagram.com/the.one.and.only.haanim?igshid=MzMyNGUyNmU2YQ=="><i class="fa-brands fa-instagram animate__animated animate__bounce"></i></a>
               <a href="https://za.linkedin.com/in/haanim-pietersen-172bb9264"><i class="fa-brands fa-linkedin animate__animated animate__bounce"></i></a>
             </div>
+            <gmap-map
+            :center="{ lat: -34.04771041870117, lng: 18.503828048706055 }"
+            :zoom="14"
+            map-id="DEMO_MAP_ID"
+            style="width: 100%; height: 400px;"
+          >
+            <gmap-marker
+              :position="{ lat: -34.04771041870117, lng: 18.503828048706055 }"
+              title="My location"
+            ></gmap-marker>
+          </gmap-map>
             <div class="map">
               <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d52879.8279558335!2d18.519421550000008!3d-34.069789899999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1dcc415380a3a2d5%3A0xc223e448d2209d8d!2sPelikan%20Park%2C%20Cape%20Town%2C%207941!5e0!3m2!1sen!2sza!4v1705045428560!5m2!1sen!2sza" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
@@ -43,6 +54,8 @@
 
 <script>
 import 'animate.css';
+import * as Vue from 'vue';
+import * as VueGoogleMaps from 'vue2-google-maps';
 export default {
   data() {
     return {
@@ -68,7 +81,7 @@ export default {
       console.log('Form submitted!', this.formData);
       // You can add additional logic, such as sending a request to your server or using Formspree
     }
-  },
+  }
 };
 </script>
   
@@ -177,20 +190,5 @@ export default {
   animation: bounce; /* referring directly to the animation's @keyframe declaration */
   animation-duration: 2s; /* don't forget to set a duration! */
 }
-
-@media (max-width: 768px) {
-    .row {
-      flex-direction: column; /* Change flex direction to column for stacking both contact sections */
-    }
-
-    .contact-left,
-    .contact-right {
-      width: 100%; 
-    }
-
-    .contact-right {
-      margin-top: 40px;
-    }
-  }
 
   </style>
