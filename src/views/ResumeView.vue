@@ -37,7 +37,7 @@
       </div>
   
       <div class="cvbtn animate__animated animate__slideInUp">
-        <a href="https://pdf.ac/1UuS9D" download class="btn">Download CV</a>
+        <a href="https://pdf.ac/1UuS9D" download class="btn">Download CV </a>
       </div>
     </div>
   </template>
