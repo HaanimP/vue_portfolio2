@@ -18,7 +18,7 @@
            
         </div>
         <div class="contact-right">
-        <form v-on:submit.prevent="submitForm" class="contact-form animate__animated animate__zoomInRight">
+        <form v-on:submit.prevent="submitForm" action="https://formspree.io/f/xyyrzezy" method="POST" class="contact-form animate__animated animate__zoomInRight">
           <label class="form-label">
             Your Name:
             <input type="text" v-model="formData.name" class="form-input" :class="{ 'error': !formData.name && submitted }">
@@ -45,32 +45,43 @@
 <script>
 import 'animate.css';
 export default {
-data() {
-  return {
-    formData: {
-      name: '',
-      email: '',
-      message: ''
-    },
-    submitted: false // Added to track if the form has been submitted
-  };
-},
-methods: {
-  submitForm() {
-    this.submitted = true; // Set submitted to true when the form is submitted
+  data() {
+    return {
+      formData: {
+        name: '',
+        email: '',
+        message: ''
+      },
+      submitted: false // Added to track if the form has been submitted
+    };
+  },
+  methods: {
+    submitForm() {
+      this.submitted = true; // Set submitted to true when the form is submitted
 
-    // Validate the form
-    if (!this.formData.name || !this.formData.email) {
-      console.log('Please fill out all required fields');
-      return;
-    }
+      // Validate the form
+      if (!this.formData.name || !this.formData.email) {
+        console.log('Please fill out all required fields');
+        return;
+      }
 
       // Handle form submission logic here
       console.log('Form submitted!', this.formData);
       // You can add additional logic, such as sending a request to your server or using Formspree
+
+      // Clear the form data after submission
+      this.clearForm();
+    },
+    clearForm() {
+      // Reset form data
+      this.formData.name = '';
+      this.formData.email = '';
+      this.formData.message = '';
+
+      // Reset submitted state
+      this.submitted = false;
     }
   },
-
 };
 </script>
   
