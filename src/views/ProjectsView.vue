@@ -1,11 +1,11 @@
 <template>
     <div class="main2">
-        <div v-for="project in $store.state.projects" v-bind:key="project.id" class="project-card">
+        <div v-for="project in $store.state.projects" v-bind:key="project.id" class="project-card animate__animated animate__backInLeft">
         <div class="card-header">
-            <h2 class="project-details">{{ project.title }}</h2>
+            <h2 class="project-details">{{ project.title }}</h2><br>
         </div>
         <div class="card-body">
-            <img :src=" project.image" class="project-image">
+            <img :src=" project.image" class="project-image"><br><br>
             <p class="project-details">{{ project.description }}</p>
         </div>
         <div class="card-footer">
@@ -18,7 +18,7 @@
     </div>
     </template>
     <script>
-    
+    import 'animate.css';
     import { mapGetters, mapActions } from "vuex";
     export default {
         // data(){
@@ -105,24 +105,30 @@
     }
     
     .project-links {
-      margin-top: auto; /* Push content to the bottom of the .card-footer */
-    }
+  margin-top: auto; /* Push content to the bottom of the .card-footer */
+  text-align: center;
+}
     
     .project-links h4 {
-      margin: 0;
-    }
+  margin: 0;
+}
     
     .project-links a {
       color: #D2B48C;
       text-decoration: none;
       font-weight: bold;
     }
+
+    .project-links a:not(:last-child) {
+  margin-right: 10px; /* Adjust the spacing between links */
+}
     
-    @media (max-width: 768px) {
-      .project-card {
-        width: calc(50% - 32px); /* Adjust the width for responsiveness */
-      }
-    }
+    @media (min-width: 768px) {
+  .project-card {
+    width: calc(25% - 15px); 
+  }
+}
+
     
     @media (max-width: 480px) {
       .project-card {

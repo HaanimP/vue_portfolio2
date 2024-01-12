@@ -12,9 +12,20 @@
               <a href="https://instagram.com/the.one.and.only.haanim?igshid=MzMyNGUyNmU2YQ=="><i class="fa-brands fa-instagram animate__animated animate__bounce"></i></a>
               <a href="https://za.linkedin.com/in/haanim-pietersen-172bb9264"><i class="fa-brands fa-linkedin animate__animated animate__bounce"></i></a>
             </div>
+            <gmap-map
+            :center="{ lat: -34.04771041870117, lng: 18.503828048706055 }"
+            :zoom="14"
+            map-id="DEMO_MAP_ID"
+            style="width: 100%; height: 400px;"
+          >
+            <gmap-marker
+              :position="{ lat: -34.04771041870117, lng: 18.503828048706055 }"
+              title="My location"
+            ></gmap-marker>
+          </gmap-map>
           </div>
           <div class="contact-right">
-          <form v-on:submit.prevent="submitForm" class="contact-form">
+          <form v-on:submit.prevent="submitForm" class="contact-form animate__animated animate__zoomInRight">
             <label class="form-label">
               Your Name:
               <input type="text" v-model="formData.name" class="form-input" :class="{ 'error': !formData.name && submitted }">
@@ -40,6 +51,8 @@
 
 <script>
 import 'animate.css';
+import * as Vue from 'vue';
+import * as VueGoogleMaps from 'vue2-google-maps';
 export default {
   data() {
     return {
@@ -65,7 +78,15 @@ export default {
       console.log('Form submitted!', this.formData);
       // You can add additional logic, such as sending a request to your server or using Formspree
     }
-  }
+  },
+  mounted() {
+    Vue.use(VueGoogleMaps, {
+      load: {
+        key: 'AIzaSyD3GHY33N2uITv2wXLWD6JU3i6kZqpuc2Q',
+        libraries: 'places', // Add additional libraries if needed
+      },
+    });
+  },
 };
 </script>
   
@@ -87,7 +108,6 @@ export default {
   }
   
   .contact-left {
-    margin-top: 25%;
     width: 45%;
   }
   
@@ -172,6 +192,7 @@ export default {
   animation-duration: 2s; /* don't forget to set a duration! */
 }
 
+
 @media (max-width: 768px) {
     .row {
       flex-direction: column; /* Change flex direction to column for stacking both contact sections */
@@ -186,4 +207,5 @@ export default {
       margin-top: 20px; /* Add some spacing between contact sections */
     }
   }
+
   </style>
