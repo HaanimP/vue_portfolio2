@@ -130,6 +130,9 @@ export default {
     padding-right: 20px;
   }
 
+  .professionalImage{
+    margin-top: 5%;
+  }
   .greeting h1 {
     color: #D2B48C;
     font-weight: bolder;
