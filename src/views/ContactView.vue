@@ -192,4 +192,20 @@ export default {
   animation-duration: 2s; /* don't forget to set a duration! */
 }
 
+
+@media (max-width: 768px) {
+    .row {
+      flex-direction: column; /* Change flex direction to column for stacking both contact sections */
+    }
+
+    .contact-left,
+    .contact-right {
+      width: 100%; /* Make both contact sections take full width on smaller screens */
+    }
+
+    .contact-right {
+      margin-top: 20px; /* Add some spacing between contact sections */
+    }
+  }
+
   </style>
