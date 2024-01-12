@@ -38,6 +38,7 @@ export default {
   display: flex;
   background: #80553C;
   padding: 20px;
+  height: 100vh;
 }
 
 .container1 {
