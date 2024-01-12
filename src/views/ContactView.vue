@@ -35,12 +35,17 @@
         </div>
       </div>
     </div>
+    <MapComponent />
   </div>
 </template>
 
 <script>
 import 'animate.css';
+import MapComponent from '../components/MapComponent.vue';
 export default {
+  components: {
+    MapComponent
+  },
   data() {
     return {
       formData: {
@@ -170,5 +175,20 @@ export default {
   animation: bounce; /* referring directly to the animation's @keyframe declaration */
   animation-duration: 2s; /* don't forget to set a duration! */
 }
+
+@media (max-width: 768px) {
+    .row {
+      flex-direction: column; /* Change flex direction to column for stacking both contact sections */
+    }
+
+    .contact-left,
+    .contact-right {
+      width: 100%; 
+    }
+
+    .contact-right {
+      margin-top: 40px;
+    }
+  }
 
   </style>
