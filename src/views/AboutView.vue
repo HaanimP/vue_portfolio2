@@ -81,6 +81,7 @@ export default {
 @media (max-width: 767px) {
   .main {
     flex-direction: column;
+    height: auto;
   }
 
   .container1,
@@ -92,6 +93,7 @@ export default {
 @media (min-width: 768px) and (max-width: 1024px) {
   .main {
     flex-direction: row;
+    height: auto;
   }
 
   .container1 {
