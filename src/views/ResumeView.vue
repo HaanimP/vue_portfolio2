@@ -173,7 +173,8 @@ export default {
 
 @media (max-width: 576px) {
   .carousel-item img {
-    max-height: 500px; /* Adjust as needed for even smaller screens */
+    width: 100px;
+    height: 500px; 
   }
 }
 
