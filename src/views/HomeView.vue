@@ -39,12 +39,15 @@ export default {
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap');
+
 .home {
   display: flex;
+  font-family: 'Merriweather', serif;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-image: url('https://i.postimg.cc/SNd2jJ44/9819e40ef04dc567e18c4c7b150cb2f5.jpg');
+  background-image: url("https://i.ibb.co/MPv0pYC/port-wall.jpg");
   background-size: cover;
   background-position: center;
   color: #D2B48C;
