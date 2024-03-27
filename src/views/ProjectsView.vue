@@ -1,200 +1,92 @@
 <template>
-    <div class="main2">
-        <div v-for="project in $store.state.projects" v-bind:key="project.id" class="project-card animate__animated animate__backInLeft">
-        <div class="card-header">
-            <h2 class="project-details">{{ project.title }}</h2><br>
-        </div>
-        <div class="card-body">
-            <img :src=" project.image" class="project-image"><br><br>
-            <p class="project-details">{{ project.description }}</p>
-        </div>
-        <div class="card-footer">
-            <div class="project-links">
-            <h4 v-if="project.Github"><a :href="project.Github" target="_blank">GitHub</a></h4>
-            <h4 v-if="project.Vercel"><a :href="project.Vercel" target="_blank">Vercel</a></h4>
+  <div class="container mt-5 mb-5">
+    <section class="row row-cols-1 row-cols-md-3 g-4">
+      <div v-for="project in $store.state.projects" :key="project.id" class="col animate__animated animate__backInLeft">
+        <div class="card h-100">
+          <img :src="project.image" class="card-img-top" alt="Project Image" />
+          <div class="card-body d-flex flex-column justify-content-between" style="font-family: 'Merriweather', serif;">
+            <div>
+              <h5 class="card-title font-weight-bold">{{ project.title }}</h5>
+              <p class="card-text">{{ project.description }}</p>
+            </div>
+            <div class="d-flex justify-content-center align-items-center">
+              <div class="project-links d-flex justify-content-center">
+                <h6 v-if="project.Github" class="me-3"><a :href="project.Github" target="_blank">GitHub</a></h6>
+                <h6 v-if="project.Vercel"><a :href="project.Vercel" target="_blank">Vercel</a></h6>
+              </div>
+            </div>
           </div>
         </div>
-        </div>
-    </div>
-    </template>
-    <script>
-    import 'animate.css';
-    import { mapGetters, mapActions } from "vuex";
-    export default {
-        // data(){
-        //     return{
-        //         projectData: jsonData
-        //     }
-        // },
-        computed: {
-        // ...mapGetters("projects", ["getProjects"]),
-        fetchProjects(){
-            this.$store.dispatch('fetchProjects')
-        }
-      },
-      methods: {
-        // ...mapActions("projects", ["fetchProjects"]),
-      },
-      mounted() {
-        this.fetchProjects
-      },
-    };
-    </script>
-    <style scoped>
-    .main2 {
-      display: flex;
-      justify-content: space-around;
-      flex-wrap: wrap;
+      </div>
+    </section>
+  </div>
+</template>
+
+<script>
+import 'animate.css';
+import { mapActions } from "vuex";
+
+export default {
+  computed: {
+    fetchProjects() {
+      this.$store.dispatch('fetchProjects')
     }
-    
-    .project-card {
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      margin: 16px;
-      width: 300px;
-      transition: transform 0.3s;
-    }
-    
-    .project-card:hover {
-      transform: scale(1.05);
-    }
-    
-    .card-container {
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-    }
-    
-    .card-header,
-    .card-body,
-    .card-footer {
-      padding: 16px;
-    }
-    
-    .card-header {
-      color: #fff;
-      background: #987554;
-      text-align: center;
-      border-top-left-radius: 8px;
-      border-top-right-radius: 8px;
-    }
-    
-    .project-image {
-      width: 100%;
-      height: 150px;
-      object-fit: cover;
-      border-radius: 8px;
-    }
-    
-    p.project-details {
-      color: #D2B48C;
-    }
-    
-    .project-details {
-      margin-top: 0;
-    }
-    
-    .card-footer {
-      flex: 1; /* Expand to fill available space */
-      display: flex;
-      flex-direction: column;
-      background-color: #987554;
-      border-bottom-left-radius: 8px;
-      border-bottom-right-radius: 8px;
-    }
-    
-    .project-links {
-  margin-top: auto; /* Push content to the bottom of the .card-footer */
-  text-align: center;
+  },
+  methods: {
+    ...mapActions("projects", ["fetchProjects"]),
+  },
+  mounted() {
+    this.fetchProjects
+  },
+};
+</script>
+
+<style scoped>
+body {
+  background-image: url("https://i.ibb.co/ZNZ01VK/port-pro.jpg");
+  background-size: cover;
+  background-position: center;
+  font-family: 'Merriweather', serif;
 }
-    
-    .project-links h4 {
+
+.card {
+  border: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card-body {
+  padding: 1.25rem;
+}
+
+.card-title {
+  color: #000;
+}
+
+.card-text {
+  color: #6c757d;
+}
+
+.btn-link {
+  color: #6c757d;
+  text-decoration: none;
+}
+
+.btn-link:hover {
+  text-decoration: underline;
+}
+
+.project-links h6 {
   margin: 0;
 }
-    
-    .project-links a {
-      color: #D2B48C;
-      text-decoration: none;
-      font-weight: bold;
-    }
 
-    .project-links a:not(:last-child) {
-  margin-right: 10px; /* Adjust the spacing between links */
+.project-links a {
+  color: #000;
+  text-decoration: none;
+  font-weight: bold;
 }
-    
-    @media (min-width: 768px) {
-  .project-card {
-    width: calc(25% - 15px); 
-  }
-}
-
-    
-    @media (max-width: 480px) {
-      .project-card {
-        width: 100%;
-      }
-    }
-    
-    .project-card:hover {
-      transform: scale(1.05);
-    }
-    
-    .card-container {
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-    }
-    
-    .card-header,
-    .card-body,
-    .card-footer {
-      padding: 16px;
-    }
-    
-    .card-header {
-      color: #fff;
-      background: #987554;
-      text-align: center;
-      border-top-left-radius: 8px;
-      border-top-right-radius: 8px;
-    }
-    
-    .project-image {
-      width: 100%;
-      height: 150px;
-      object-fit: cover;
-      border-radius: 8px;
-    }
-    
-    p.project-details {
-      color: #D2B48C;
-    }
-    
-    .project-details {
-      margin-top: 0;
-    }
-    
-    .card-footer {
-      flex: 1; /* Expand to fill available space */
-      display: flex;
-      flex-direction: column;
-      background-color: #987554;
-      border-bottom-left-radius: 8px;
-      border-bottom-right-radius: 8px;
-    }
-    
-    .project-links {
-      margin-top: auto; /* Push content to the bottom of the .card-footer */
-    }
-    
-    .project-links h4 {
-      margin: 0;
-    }
-    
-    .project-links a {
-      color: #D2B48C;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    </style>
+</style>
