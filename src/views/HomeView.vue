@@ -1,19 +1,24 @@
 <template>
   <div class="home">
-    <div class="row animate__animated animate__fadeInTopLeft" v-if="HomeArray && HomeArray.length > 0">
+    <div class="row" v-if="HomeArray && HomeArray.length > 0">
       <div class="col-4">
-        <div class="webDeveloperTitle">
+        <div class="webDeveloperTitle animate__animated animate__backInLeft">
           <h1>{{ HomeArray[0].title }}</h1>
         </div>
-        <div class="greeting">
+        <div class="greeting animate__animated animate__backInUp">
           <h1>{{ HomeArray[0].greeting.text }} <span class="nameSpan">{{ HomeArray[0].greeting.name }}</span></h1>
           <router-link to="/contact" class="contact-button">{{ HomeArray[0].contactButton }}</router-link>
         </div>
       </div>
 
-      <div class="col-4">
-        <div class="professionalImage">
-          <img :src="HomeArray[0].imageSrc" alt="Professional Image">
+      <div class="col-8">
+        <div class="imageContainer animate__animated animate__backInRight">
+          <div class="professionalImage">
+            <img :src="HomeArray[0].imageSrc" alt="Professional Image">
+          </div>
+          <div class="additionalImage">
+            <img src="https://i.ibb.co/WxTf0Dp/port-home.jpg" alt="Additional Image">
+          </div>
         </div>
       </div>
     </div>
@@ -62,6 +67,10 @@ export default {
   flex: 0 0 33.33%;
 }
 
+.col-8 {
+  flex: 0 0 66.66%;
+}
+
 .webDeveloperTitle {
   text-align: left;
   padding-left: 20px;
@@ -74,14 +83,20 @@ export default {
   color: #D2B48C;
 }
 
-.professionalImage {
+.imageContainer {
+  display: flex;
+}
+
+.professionalImage,
+.additionalImage {
+  flex: 1;
   text-align: center;
 }
 
-.professionalImage img {
-  width: 100%;
-  max-width: 300px;
-  height: auto;
+.professionalImage img,
+.additionalImage img {
+  width: 400px;
+  height: 400px;
   border-radius: 5%;
 }
 
@@ -121,7 +136,7 @@ export default {
     flex-direction: column;
   }
 
-  .col-4 {
+  .col-4, .col-8 {
     flex: 1;
     width: 100%;
   }
@@ -133,19 +148,13 @@ export default {
     padding-right: 20px;
   }
 
-  .professionalImage{
+  .professionalImage, .additionalImage {
     margin-top: 5%;
   }
+
   .greeting h1 {
     color: #D2B48C;
     font-weight: bolder;
-  }
-}
-
-@media only screen and (max-width: 1024px) {
-  .col-4 {
-    flex: 1;
-    width: 100%;
   }
 }
 </style>
