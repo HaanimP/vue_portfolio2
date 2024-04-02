@@ -32,12 +32,10 @@ export default {
   components: {},
   computed: {
     HomeArray() {
-      // Ensure that HomeArray is always an array
       return this.$store.state.home || [];
     }
   },
   mounted() {
-    // Dispatch the fetchHome action when the component is mounted
     this.$store.dispatch('fetchHome');
   }
 }
@@ -155,6 +153,16 @@ export default {
   .greeting h1 {
     color: #D2B48C;
     font-weight: bolder;
+  }
+
+  .additionalImage {
+    display: none;
+  }
+
+  .professionalImage img {
+    width: 100%; 
+    height: auto; 
+    border-radius: 5%; 
   }
 }
 </style>
