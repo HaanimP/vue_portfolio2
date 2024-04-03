@@ -1,52 +1,62 @@
 <template>
-  <div class="container mt-5 mb-5">
-    <section class="row row-cols-1 row-cols-md-3 g-4">
-      <div v-for="project in $store.state.projects" :key="project.id" class="col animate__animated animate__backInLeft">
-        <div class="card h-100">
-          <img :src="project.image" class="card-img-top" alt="Project Image" />
-          <div class="card-body d-flex flex-column justify-content-between" style="font-family: 'Merriweather', serif;">
-            <div>
-              <h5 class="card-title font-weight-bold">{{ project.title }}</h5>
-              <p class="card-text">{{ project.description }}</p>
-            </div>
-            <div class="d-flex justify-content-center align-items-center">
+  <div class="body">
+    <div class="container mt-5 mb-5">
+      <section class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        <div
+          v-for="project in $store.state.projects"
+          :key="project.id"
+          class="col animate__animated animate__backInLeft"
+        >
+          <div class="card h-100">
+            <img :src="project.image" class="card-img-top" alt="Project Image" />
+            <div class="card-body d-flex flex-column justify-content-between">
+              <div>
+                <h5 class="card-title font-weight-bold">{{ project.title }}</h5>
+                <p class="card-text">{{ project.description }}</p>
+              </div>
               <div class="project-links d-flex justify-content-center">
-                <h6 v-if="project.Github" class="me-3"><a :href="project.Github" target="_blank">GitHub</a></h6>
-                <h6 v-if="project.Vercel"><a :href="project.Vercel" target="_blank">Vercel</a></h6>
+                <h6 v-if="project.Github" class="me-3">
+                  <a :href="project.Github" target="_blank">GitHub</a>
+                </h6>
+                <h6 v-if="project.Vercel">
+                  <a :href="project.Vercel" target="_blank">Vercel</a>
+                </h6>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
   </div>
 </template>
 
 <script>
-import 'animate.css';
+import "animate.css";
 import { mapActions } from "vuex";
 
 export default {
   computed: {
     fetchProjects() {
-      this.$store.dispatch('fetchProjects')
-    }
+      this.$store.dispatch("fetchProjects");
+    },
   },
   methods: {
     ...mapActions("projects", ["fetchProjects"]),
   },
   mounted() {
-    this.fetchProjects
+    this.fetchProjects;
   },
 };
 </script>
 
 <style scoped>
-body {
-  background-image: url("https://i.ibb.co/ZNZ01VK/port-pro.jpg");
+.body {
+  background-image: url("https://i.ibb.co/r5gYfTd/pro.jpg");
   background-size: cover;
   background-position: center;
-  font-family: 'Merriweather', serif;
+  padding: 20px;
+  height: 150vh;
+  font-family: "Merriweather", serif;
 }
 
 .card {
@@ -61,18 +71,13 @@ body {
 
 .card-body {
   padding: 1.25rem;
+  background: linear-gradient(to bottom right, #a67b5b, #402b1c);
 }
 
-.card-title {
-  color: #000;
-}
-
-.card-text {
-  color: #6c757d;
-}
-
-.btn-link {
-  color: #6c757d;
+.card-title,
+.card-text,
+.project-links a {
+  color: #fff;
   text-decoration: none;
 }
 
@@ -84,9 +89,10 @@ body {
   margin: 0;
 }
 
-.project-links a {
-  color: #000;
-  text-decoration: none;
-  font-weight: bold;
+@media only screen and (max-width: 600px) {
+  .body {
+    background-size: contain;
+    height: auto;
+  }
 }
 </style>
